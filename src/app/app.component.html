@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <h1> {{title}}: {{ totalComment }} </h1>
+  <div class="col-md-12">
+    <app-comment-form></app-comment-form>
+    <br>
+    <app-comment-list></app-comment-list>
+  </div>
+</div>
