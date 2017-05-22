@@ -22,7 +22,7 @@ export class CommentListComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
-    this.commentService.commentCreated$.subscribe((comment: Comment) => this.comments.unshift(comment));
+    this.commentService.get('ADD_COMMENT').subscribe((comment: Comment) => this.comments.unshift(comment));
   }
 
 }

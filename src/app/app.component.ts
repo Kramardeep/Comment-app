@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit(): void {
-    this.commentService.commentCreated$.subscribe(() => this.totalComment++);
+    this.commentService.get('ADD_COMMENT').subscribe(() => this.totalComment++);
   }
 }

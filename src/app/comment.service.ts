@@ -1,23 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import { Comment } from './comment';
 
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 
 @Injectable()
 export class CommentService {
 
-  // Observable comment sources
-  private commentCreatedSource = new Subject<Comment>();
+  private  _emitters: { [ID: string]: EventEmitter<any> } = {};
 
-  // Observable string streams
-  commentCreated$ = this.commentCreatedSource.asObservable();
-
-  // Service message commands
-  createComment(comment: Comment) {
-    this.commentCreatedSource.next(comment);
+  get(ID: string): EventEmitter<any> {
+    if (!this._emitters[ID]) {
+      this._emitters[ID] = new EventEmitter();
+    }
+    return this._emitters[ID];
   }
 }

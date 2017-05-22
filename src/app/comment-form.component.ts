@@ -20,12 +20,13 @@ import { CommentService } from './comment.service';
 })
 export class CommentFormComponent {
 
+
   comment: Comment = new Comment();
 
   constructor( private commentService: CommentService) { }
 
   add(): void {
-    this.commentService.createComment(this.comment);
+    this.commentService.get('ADD_COMMENT').emit(this.comment);
     this.comment = new Comment();
   }
 
